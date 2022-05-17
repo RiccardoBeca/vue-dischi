@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+<div>
+  <HeaderComp/>
+  <MainComp/>
+</div>
+
+ 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
+import HeaderComp from "./components/HeaderComp.vue";
+import MainComp from "./components/MainComp.vue";
 
 export default {
   name: 'App',
+
+  data(){
+    return{
+      urlApi: "https://flynn.boolean.careers/exercises/api/array/music",
+      discsArray: [],
+    }
+  },
+
   components: {
-    HelloWorld
+    HeaderComp,
+    MainComp
+  },
+
+  mounted(){
+    this.getApi()
+  },
+
+  methods:{
+    getApi(){
+      axios.get(this.urlApi)
+      .then(r=>{
+        this.discsArray = r.data;
+        console.log(r.data);
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
