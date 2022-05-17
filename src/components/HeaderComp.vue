@@ -1,13 +1,22 @@
 <template>
-<div class="container-fluid">
-  header
+<div class="container-bg d-flex justify-content-center align-items-center">
+  <div class="container-fluid d-flex justify-content-between">
+  <div class="logo">LOGOIMG</div>
+  <select name="" id="">
+    <option value="" disabled selected hidden>Seleziona un genere</option>
+    <option value="">Jazz</option>
+    <option value="">Rock</option>
+    <option value="">Pop</option>
+  </select>
 </div>
+</div>
+
   
 </template>
 
 <script>
 export default {
-  name:"MainComp"
+  name:"HeaderComp"
 }
 </script>
 
@@ -15,4 +24,10 @@ export default {
 @import '../assets/style/_vars.scss';
 @import '../assets/style/_general.scss';
 @import '../assets/style/_utils.scss';
+
+.container-bg{
+  background-color: rgb(45, 57, 69);
+  height: 80px;
+}
+
 </style>
