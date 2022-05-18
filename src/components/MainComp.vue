@@ -1,12 +1,16 @@
 <template>
-  <div class="bg-container">
-     <div class="container d-flex flex-wrap pt-5">
-     <CardComp
-     v-for="(disc, index) in discsArray" :key="`disc${index}`"
-     :cardItem="disc"
-     />
-    </div>
+  <div>
+      <HeaderComp @cambiaValore= 'genereScelto'/>
+      <div class="bg-container">
+        <div class="container d-flex flex-wrap pt-5">
+        <CardComp
+        v-for="(disc, index) in filtraGeneri" :key="`disc${index}`"
+        :cardItem="disc"
+        />
+        </div>
+      </div>
   </div>
+  
  
   
 </template>
@@ -14,9 +18,10 @@
 <script>
 import axios from "axios";
 import CardComp from './CardComp.vue';
+import HeaderComp from "./HeaderComp.vue";
 export default {
   name: "MainComp",
-  components: { CardComp },
+  components: { CardComp, HeaderComp },
   data(){
     return{
       urlApi: "https://flynn.boolean.careers/exercises/api/array/music",
@@ -36,8 +41,16 @@ export default {
         this.discsArray = r.data.response;
         console.log(r.data);
       })
+    },
+    genereScelto(cambiaGenere){
+      this.genereSelezionato = cambiaGenere
+      console.log(cambiaGenere);
+
     }
-  }
+
+  },
+  
+  
 }
 </script>
 

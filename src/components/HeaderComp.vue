@@ -2,11 +2,14 @@
 <div class="container-bg d-flex justify-content-center align-items-center">
   <div class="container-fluid d-flex justify-content-between">
   <div class="logo">LOGOIMG</div>
-  <select name="" id="">
-    <option value="" disabled selected hidden>Seleziona un genere</option>
-    <option value="">Jazz</option>
-    <option value="">Rock</option>
-    <option value="">Pop</option>
+   <select 
+   v-model="genereSelezionato"
+   @change="changeValue"
+   name="" id="">
+    <option value="">Seleziona un genere</option>
+    <option value="Jazz">Jazz</option>
+    <option value="Rock">Rock</option>
+    <option value="Pop">Pop</option>
   </select>
 </div>
 </div>
@@ -16,7 +19,34 @@
 
 <script>
 export default {
-  name:"HeaderComp"
+    name: "HeaderComp",
+    data(){
+    return {
+      genereSelezionato:"",
+    }
+  },
+
+  methods:{
+    changeValue(){
+      this.$emit("cambiaValore", this.genereSelezionato);
+    },
+    filtraGeneri(){
+
+      let arrayFiltrato = [];
+      
+      for(let i = 0; i < this.discsArray.length; i++) {
+
+        if(this.discsArray[i].genre === this.genereSelezionato) {
+          arrayFiltrato.push(this.discsArray[i])
+        }
+      }
+      
+      return arrayFiltrato;
+    }
+  },
+  
+  
+ 
 }
 </script>
 
