@@ -30,19 +30,7 @@ export default {
     changeValue(){
       this.$emit("cambiaValore", this.genereSelezionato);
     },
-    filtraGeneri(){
-
-      let arrayFiltrato = [];
-      
-      for(let i = 0; i < this.discsArray.length; i++) {
-
-        if(this.discsArray[i].genre === this.genereSelezionato) {
-          arrayFiltrato.push(this.discsArray[i])
-        }
-      }
-      
-      return arrayFiltrato;
-    }
+   
   },
   
   
